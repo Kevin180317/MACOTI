@@ -3,8 +3,17 @@ import "@styles/global.css";
 
 import { getLangFromUrl } from "@i18n/utils";
 import Navbar from "@componets/Navbar";
+import { ClientRouter } from "astro:transitions";
 
 const lang = getLangFromUrl(Astro.url);
+
+interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+}
+
+const { title, description, keywords } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,10 +23,67 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Macoti</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+
+    <title>
+      {title}
+    </title>
+    <ClientRouter />
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <Navbar client:only="react" />
     <slot />
   </body>
 </html>
+
+<style is:global>
+  /* Optimización de fuentes */
+  @font-face {
+    font-family: "Tgaqsapro";
+    src: url("/fonts/Fontspring-DEMO-tgaqsapro-black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Tgaqsapro";
+    src: url("/fonts/Fontspring-DEMO-tgaqsapro-bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Tgaqsapro";
+    src: url("/fonts/Fontspring-DEMO-tgaqsapro-light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Tgaqsapro";
+    src: url("/fonts/Fontspring-DEMO-tgaqsapro-medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Tgaqsapro";
+    src: url("/fonts/Fontspring-DEMO-tgaqsapro-regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Tgaqsapro";
+    src: url("/fonts/Fontspring-DEMO-tgaqsapro-ultrablack.otf")
+      format("opentype");
+    font-weight: 950;
+    font-style: normal;
+  }
+
+  /* Estilos globales */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Tgaqsapro", sans-serif;
+    font-weight: 400;
+  }
+</style>

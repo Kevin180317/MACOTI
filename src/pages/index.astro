@@ -1,8 +1,23 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@componets/Hero.astro";
+import About from "@componets/About.astro";
+import Services from "@componets/Services";
+import Projects from "@componets/Projects.astro";
+import Contact from "@componets/Contact.astro";
+import Footer from "@componets/Footer.astro";
 ---
 
-<Layout>
+<Layout
+  title="Home"
+  description="Welcome to our website"
+  keywords="home, website, example"
+>
   <Hero />
+  <About />
+  <Services client:visible />
+  <Projects />
+  <Contact />
+  <hr class="border border-black w-full" />
+  <Footer />
 </Layout>

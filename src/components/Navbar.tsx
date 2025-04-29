@@ -33,18 +33,13 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-800 text-white">
-      <div className="container mx-auto flex justify-between items-center p-4">
+    <nav className="bg-white text-black">
+      <div className="container-nav">
         {/* Logo */}
-        <div className="flex items-center">
-          <img
-            src="/logo.jpg"
-            alt="Macoti Logo"
-            title="Macoti Logo"
-            className="h-10 w-10"
-          />
+        <a href="/" className="flex items-center">
+          <img src="/logo.png" alt="Macoti Logo" title="Macoti Logo" />
           <span className="ml-2 text-xl font-bold">Macoti</span>
-        </div>
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
@@ -52,7 +47,7 @@ function Navbar() {
             <motion.a
               key={item.id}
               href={item.link}
-              className="hover:text-gray-400 transition-colors"
+              className="animacion-hover-nav"
               whileHover={{ scale: 1.1 }}
             >
               {item.name}
@@ -81,7 +76,7 @@ function Navbar() {
               <li key={item.id}>
                 <a
                   href={item.link}
-                  className="text-white hover:text-gray-400 transition-colors"
+                  className="animacion-hover-nav"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

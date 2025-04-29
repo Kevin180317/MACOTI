@@ -5,12 +5,10 @@
     --color-secundario: #4c4c4c;
 }
 
-.select2-dropdown {
-    @apply rounded-b-lg shadow-md;
+.container-nav {
+    @apply container mx-auto flex justify-between items-center p-4;
   }
-  .select2-search {
-    @apply rounded border border-gray-300;
-  }
-  .select2-results__group {
-    @apply text-lg font-bold text-gray-900;
-  }
+
+.animacion-hover-nav {
+  @apply hover:text-principal text-secundario transition-colors font-semibold
+}
