@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+    --color-principal: #f79428;
+    --color-secundario: #4c4c4c;
+}
+
+.select2-dropdown {
+    @apply rounded-b-lg shadow-md;
+  }
+  .select2-search {
+    @apply rounded border border-gray-300;
+  }
+  .select2-results__group {
+    @apply text-lg font-bold text-gray-900;
+  }
