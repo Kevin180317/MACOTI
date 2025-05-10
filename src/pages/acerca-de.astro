@@ -1,16 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Services from "@componets/Services.astro";
+import AboutPage from "@componets/AboutPage.astro";
 import Footer from "@componets/Footer.astro";
 ---
 
 <Layout
-  title="MACOTI | Services"
+  title="MACOTI | Acerca de nosotros"
   description="Welcome to our website"
-  keywords="services, website, example"
+  keywords="about, website, example"
 >
   <div class="mt-20 md:mt-28 md:h-screen w-auto flex justify-center">
-    <Services client:visible />
+    <AboutPage />
   </div>
   <hr class="border border-black w-full" />
   <Footer />

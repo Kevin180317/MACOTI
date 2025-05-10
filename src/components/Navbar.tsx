@@ -15,7 +15,7 @@ function Navbar() {
     {
       id: 2,
       name: "Acerca de",
-      link: "/about/",
+      link: "/acerca-de/",
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ function Navbar() {
     {
       id: 4,
       name: "Contacto",
-      link: "/contact/",
+      link: "/contacto/",
     },
   ];
 

@@ -7,7 +7,7 @@ import { FaLinkedinIn } from "react-icons/fa";
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">About Us</h3>
+        <h3 class="font-semibold mb-4 text-3xl">Sobre nosotros</h3>
         <div class="space-y-2 flex flex-col">
           <p class="text-gray-600">
             En MACOTI Contamos con amplia experiencia en la industria
@@ -28,20 +28,26 @@ import { FaLinkedinIn } from "react-icons/fa";
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Features</h3>
+        <h3 class="font-semibold mb-4 text-3xl">Funciones</h3>
         <ul class="space-y-2 text-gray-600">
-          <li><a href="#" class="hover:text-[#f79428]">Inicio</a></li>
-          <li><a href="#" class="hover:text-[#f79428]">Acerca de</a></li>
-          <li><a href="#" class="hover:text-[#f79428]">Proyectos</a></li>
+          <li><a href="/" class="hover:text-[#f79428]">Inicio</a></li>
+          <li>
+            <a href="/acerca-de/" class="hover:text-[#f79428]">Acerca de</a>
+          </li>
+          <li>
+            <a href="/proyectos/" class="hover:text-[#f79428]">Proyectos</a>
+          </li>
           <li>
             <a href="/servicios/" class="hover:text-[#f79428]">Servicios</a>
           </li>
-          <li><a href="#" class="hover:text-[#f79428]">Contacto</a></li>
+          <li>
+            <a href="/contacto/" class="hover:text-[#f79428]">Contacto</a>
+          </li>
         </ul>
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Follow Us</h3>
+        <h3 class="font-semibold mb-4 text-3xl">Síguenos en</h3>
         <ul class="space-y-2 text-gray-600">
           <li class="flex items-center space-x-2">
             <div class="bg-[#1877F2] p-2 rounded-full">
@@ -67,18 +73,24 @@ import { FaLinkedinIn } from "react-icons/fa";
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Useful Links</h3>
+        <h3 class="font-semibold mb-4 text-3xl">Enlaces de interés</h3>
         <ul class="space-y-2 text-gray-600">
-          <li><a href="#" class="hover:text-[#f79428]">Privacy Policy</a></li>
           <li>
-            <a href="#" class="hover:text-[#f79428]">Terms & Conditions</a>
+            <a href="/politica-de-servicio/" class="hover:text-[#f79428]"
+              >Política de Servicio</a
+            >
+          </li>
+          <li>
+            <a href="/terminos-y-condiciones/" class="hover:text-[#f79428]"
+              >Términos y Condiciones</a
+            >
           </li>
         </ul>
       </div>
     </div>
 
     <!-- Copyright -->
-    <div class="border-t-2 border-black pt-4 pb-6 text-center text-gray-600">
+    <div class="border-t-2 border-black pt-4 pb-4 text-center text-gray-600">
       &copy; {new Date().getFullYear()} MACOTI. Todos los derechos reservados.
     </div>
   </div>
