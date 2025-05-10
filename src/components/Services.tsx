@@ -4,40 +4,40 @@ const services = [
   {
     titulo: 'Maquinado',
     elementos: {
-      M1: 'Moldes de inyección de plástico y partes de repuesto',
-      M2: 'Moldes de termo formado',
-      M3: 'Troqueles',
-      M4: 'Estaciones de trabajo (Automatización)',
-      M5: 'Dados de Suaje y sellado por radio frecuencia',
-      M6: 'Fixturas',
-      M7: 'Soldadura',
-      M8: 'Die Casting (operaciones secundarias)'
+      S1: 'Moldes de inyección de plástico y partes de repuesto',
+      S2: 'Moldes de termo formado',
+      S3: 'Troqueles',
+      S4: 'Estaciones de trabajo (Automatización)',
+      S5: 'Dados de Suaje y sellado por radio frecuencia',
+      S6: 'Fixturas',
+      S7: 'Soldadura',
+      S8: 'Die Casting (operaciones secundarias)'
     },
   },
   {
     titulo: 'Manufactura',
     elementos: {
-      M1: 'Optimización de procesos de maquinado',
-      M2: 'Programación 3, 4 y 5 Ejes',
-      M3: 'Diseño de herramientas especiales',
-      M4: 'Ingeniería Inversa',
+      S1: 'Optimización de procesos de maquinado',
+      S2: 'Programación 3, 4 y 5 Ejes',
+      S3: 'Diseño de herramientas especiales',
+      S4: 'Ingeniería Inversa',
     },
   },
   {
     titulo: 'Mantenimiento Preventivo y Correctivo',
     elementos: {
-      M1: 'Moldes de inyección',
-      M2: 'Troqueles',
-      M3: 'Dados de Suaje y de sellado por radio frecuencia.',
-      M4: 'Moldes de termo formado',
+      S1: 'Moldes de inyección',
+      S2: 'Troqueles',
+      S3: 'Dados de Suaje y de sellado por radio frecuencia.',
+      S4: 'Moldes de termo formado',
     },
   },
   {
     titulo: 'Entrenamiento',
     elementos: {
-      M1: 'Capacitación para el uso de maquinaría CNC; Fresadora de 3 a 5 Ejes, Torno, EDM, Wire EDM, Laser, Plasma. Fundamentos básicos de seguridad y operación.',
-      M2: 'Operación de maquinaria CNC y programación a pie de máquina.',
-      M3: 'Programación CNC (Mastercam 2018)',
+      S1: 'Capacitación para el uso de maquinaría CNC; Fresadora de 3 a 5 Ejes, Torno, EDM, Wire EDM, Laser, Plasma. Fundamentos básicos de seguridad y operación.',
+      S2: 'Operación de maquinaria CNC y programación a pie de máquina.',
+      S3: 'Programación CNC (Mastercam 2018)',
     },
   },
 ];
