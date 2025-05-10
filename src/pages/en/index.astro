@@ -2,21 +2,21 @@
 import Layout from "@layouts/Layout.astro";
 import Hero from "@componets/Hero.astro";
 import About from "@componets/About.astro";
-import Services from "@componets/Services";
 import Projects from "@componets/Projects.astro";
+import Gallery from "@componets/Gallery.astro";
 import Contact from "@componets/Contact.astro";
 import Footer from "@componets/Footer.astro";
 ---
 
 <Layout
-  title="Home"
+  title="MACOTI | Home"
   description="Welcome to our website"
   keywords="home, website, example"
 >
   <Hero />
   <About />
-  <Services client:visible />
   <Projects />
+  <Gallery />
   <Contact />
   <hr class="border border-black w-full" />
   <Footer />
