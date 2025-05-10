@@ -1,13 +1,131 @@
 ---
+import Footer from "@componets/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+
+interface Proyecto {
+  categoria: string;
+  titulo: string;
+  descripcion: string;
+  objetivo: string;
+  resultados: string;
+  duracion: string;
+  disenador: string;
+}
+
+const proyectosData: Record<string, Proyecto> = {
+  proyecto1: {
+    categoria: "Diseño",
+    titulo: "Proyecto 1",
+    descripcion:
+      "Custom Furniture Project for a Restaurant with a Cozy and Elegant Design.",
+    objetivo:
+      "Create a comfortable and sophisticated space with custom-made furniture, incorporating a blue upholstered bench, decorative cushions, and tables with marble tops.",
+    resultados:
+      "A harmonious ambiance that blends comfort and style, optimizing space usage to enhance the customer experience.",
+    duracion: "6 weeks from design to installation.",
+    disenador: "Cindy Carson",
+  },
+  proyecto2: {
+    categoria: "Arquitectura",
+    titulo: "Proyecto 2",
+    descripcion: "Modern architectural design for a residential building.",
+    objetivo: "Create a sustainable and energy-efficient living space.",
+    resultados:
+      "A modern and eco-friendly building with optimized natural lighting.",
+    duracion: "8 months from concept to completion.",
+    disenador: "John Doe",
+  },
+  proyecto3: {
+    categoria: "Ingeniería",
+    titulo: "Proyecto 3",
+    descripcion: "Engineering solutions for a high-tech manufacturing plant.",
+    objetivo: "Optimize production processes with cutting-edge technology.",
+    resultados: "Increased efficiency and reduced operational costs.",
+    duracion: "12 months from planning to execution.",
+    disenador: "Jane Smith",
+  },
+  proyecto4: {
+    categoria: "Interiorismo",
+    titulo: "Proyecto 4",
+    descripcion: "Interior design for a luxury apartment.",
+    objetivo: "Combine elegance and functionality in a compact space.",
+    resultados: "A stylish and practical living environment.",
+    duracion: "4 months from design to implementation.",
+    disenador: "Emily Davis",
+  },
+  proyecto5: {
+    categoria: "Paisajismo",
+    titulo: "Proyecto 5",
+    descripcion: "Landscape design for a public park.",
+    objetivo: "Create a relaxing and family-friendly outdoor space.",
+    resultados:
+      "A vibrant park with walking paths, playgrounds, and picnic areas.",
+    duracion: "10 months from concept to realization.",
+    disenador: "Michael Brown",
+  },
+};
+
 export function getStaticPaths() {
   return [
-    { params: { proyecto: "portfolio" } },
-    { params: { proyecto: "ecommerce" } },
-    { params: { proyecto: "blog" } },
+    { params: { proyecto: "proyecto1" } },
+    { params: { proyecto: "proyecto2" } },
+    { params: { proyecto: "proyecto3" } },
+    { params: { proyecto: "proyecto4" } },
+    { params: { proyecto: "proyecto5" } },
   ];
 }
 
 const { proyecto } = Astro.params;
+const data = proyectosData[proyecto as string];
 ---
 
-<div>Good proyecto, {proyecto}!</div>
+<Layout
+  title={`Proyecto: ${data.titulo}`}
+  description={`Detalles sobre el proyecto ${data.titulo}.`}
+  keywords={`proyecto, ${data.titulo}, detalles`}
+>
+  <!-- Primera sección -->
+  <section class="relative h-screen bg-gray-300">
+    <div
+      class="absolute inset-0 flex flex-col justify-center animate-pulse items-center text-white text-center"
+    >
+      <h1 class="text-4xl font-bold uppercase">{data.titulo}</h1>
+    </div>
+    <div
+      class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white py-4 px-8 flex justify-between items-center h-48"
+    >
+      <span class="text-sm uppercase">Categoría: {data.categoria}</span>
+      <a
+        href="/proyectos/"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+      >
+        Regresar
+      </a>
+    </div>
+  </section>
+
+  <!-- Segunda sección -->
+  <section
+    class="container mx-auto px-8 mt-12 grid grid-cols-1 md:grid-cols-2 gap-8"
+  >
+    <!-- Primera columna -->
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Success Story and Client</h2>
+      <p class="text-gray-700 mb-4">{data.descripcion}</p>
+      <h3 class="text-xl font-semibold mb-2">Objective</h3>
+      <p class="text-gray-700 mb-4">{data.objetivo}</p>
+      <h3 class="text-xl font-semibold mb-2">Results</h3>
+      <p class="text-gray-700">{data.resultados}</p>
+    </div>
+
+    <!-- Segunda columna -->
+    <div>
+      <h3 class="text-xl font-semibold mb-2">Project Duration</h3>
+      <p class="text-gray-700 mb-4">{data.duracion}</p>
+      <h3 class="text-xl font-semibold mb-2">Designed by</h3>
+      <p class="text-gray-700">{data.disenador}</p>
+    </div>
+  </section>
+  <hr class="mt-8 mx-auto container" />
+  <Footer />
+</Layout>
