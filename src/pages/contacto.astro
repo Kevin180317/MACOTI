@@ -1,0 +1,51 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Footer from "@componets/Footer.astro";
+---
+
+<Layout
+  title="MACOTI | Contacto"
+  description="Macoti ayuda a realizar tus proyectos"
+  keywords="Macoti, Maquinado, Especializado"
+>
+  <main class="container mx-auto px-8 mt-32">
+    <h1 class="text-3xl font-bold text-start uppercase text-gray-800">
+      Get in touch with us to design your dream home
+    </h1>
+    <div class="w-full flex justify-center mt-8">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3366.4744184533497!2d-116.9198451!3d32.460000199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d939cc93999acb%3A0x57173c2bf3ba3508!2sMACOTI!5e0!3m2!1ses!2smx!4v1746898121287!5m2!1ses!2smx"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="rounded-lg shadow-lg"></iframe>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-800">
+          Talk with our expert designers
+        </h2>
+        <p class="mt-4 text-gray-600">
+          Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui,
+          eu pulvinar nunc sapien ornare nisl.
+        </p>
+        <p class="mt-2 text-gray-600">
+          Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-800">Our Office</h2>
+        <p class="mt-4 text-gray-600">
+          70 Washington Square South<br />New York, NY 10012, United States
+        </p>
+        <p class="mt-4 text-gray-600">contact_info@homekins.com</p>
+        <p class="mt-2 text-gray-600">+92 423 567 7</p>
+      </div>
+    </div>
+    <hr class="mt-4" />
+  </main>
+  <Footer />
+</Layout>
