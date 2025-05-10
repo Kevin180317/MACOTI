@@ -15,17 +15,17 @@ function Navbar() {
     {
       id: 2,
       name: "Acerca de",
-      link: "/about",
+      link: "/about/",
     },
     {
       id: 3,
       name: "Servicios",
-      link: "/services",
+      link: "/servicios/",
     },
     {
       id: 4,
       name: "Contacto",
-      link: "/contact",
+      link: "/contact/",
     },
   ];
 
