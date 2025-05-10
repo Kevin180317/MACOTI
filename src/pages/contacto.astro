@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Footer from "@componets/Footer.astro";
+import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 ---
 
 <Layout
@@ -10,7 +11,7 @@ import Footer from "@componets/Footer.astro";
 >
   <main class="container mx-auto px-8 mt-32">
     <h1 class="text-3xl font-bold text-start uppercase text-gray-800">
-      Get in touch with us to design your dream home
+      En MACOTI contamos con amplia experiencia en la industria metalmecánica
     </h1>
     <div class="w-full flex justify-center mt-8">
       <iframe
@@ -26,23 +27,30 @@ import Footer from "@componets/Footer.astro";
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
       <div>
         <h2 class="text-2xl font-semibold text-gray-800">
-          Talk with our expert designers
+          Áreas de participación
         </h2>
         <p class="mt-4 text-gray-600">
-          Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui,
-          eu pulvinar nunc sapien ornare nisl.
+          Contamos con experiencia en áreas médicas, aeroespacial y automotriz.
         </p>
         <p class="mt-2 text-gray-600">
-          Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+          Nos ponemos a sus órdenes para cualquier consulta o proyecto.
         </p>
       </div>
       <div>
-        <h2 class="text-2xl font-semibold text-gray-800">Our Office</h2>
-        <p class="mt-4 text-gray-600">
-          70 Washington Square South<br />New York, NY 10012, United States
+        <h2 class="text-2xl font-semibold text-gray-800">Nuestra Oficina</h2>
+        <p class="mt-4 text-gray-600 flex items-center">
+          <FaPhoneAlt className="mr-2 text-blue-500" />
+          <a href="tel:6643748031" class="text-blue-500 hover:underline"
+            >6643748031</a
+          >
         </p>
-        <p class="mt-4 text-gray-600">contact_info@homekins.com</p>
-        <p class="mt-2 text-gray-600">+92 423 567 7</p>
+        <p class="mt-2 text-gray-600 flex items-center">
+          <FaEnvelope className="mr-2 text-blue-500" />
+          <a
+            href="mailto:MACOTI.Ricardo@gmail.com"
+            class="text-blue-500 hover:underline">MACOTI.Ricardo@gmail.com</a
+          >
+        </p>
       </div>
     </div>
     <hr class="mt-4" />
