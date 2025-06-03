@@ -1,11 +1,8 @@
 ---
 import "@styles/global.css";
 
-import { getLangFromUrl } from "@i18n/utils";
 import Navbar from "@components/Navbar";
 import { ClientRouter } from "astro:transitions";
-
-const lang = getLangFromUrl(Astro.url);
 
 interface Props {
   title: string;
@@ -17,7 +14,7 @@ const { title, description, keywords } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

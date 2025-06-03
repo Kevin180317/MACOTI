@@ -1,36 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isEn, setIsEn] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const year = new Date().getFullYear();
 
-  const listItems = [
-    {
-      id: 1,
-      name: "Inicio",
-      link: "/",
-    },
-    {
-      id: 2,
-      name: "Acerca de",
-      link: "/acerca-de/",
-    },
-    {
-      id: 3,
-      name: "Servicios",
-      link: "/servicios/",
-    },
-    {
-      id: 4,
-      name: "Contacto",
-      link: "/contacto/",
-    },
-  ];
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname;
+      setIsEn(path.startsWith("/en/"));
+    }
+  }, []);
+
+  const listItems = isEn
+    ? [
+        { id: 1, name: "Home", link: "/en/" },
+        { id: 2, name: "About", link: "/en/acerca-de/" },
+        { id: 3, name: "Services", link: "/en/servicios/" },
+        { id: 4, name: "Contact", link: "/en/contacto/" },
+      ]
+    : [
+        { id: 1, name: "Inicio", link: "/" },
+        { id: 2, name: "Acerca de", link: "/acerca-de/" },
+        { id: 3, name: "Servicios", link: "/servicios/" },
+        { id: 4, name: "Contacto", link: "/contacto/" },
+      ];
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleLanguage = () => {
+    if (isAnimating) return; // evitar múltiples clicks
+    setIsAnimating(true);
+    setIsEn((prev) => !prev); // Cambiar estado para mover la píldora
   };
 
   const menuVariants = {
@@ -41,15 +47,15 @@ function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white text-black border-b border-gray-300 shadow-md z-50">
-      <div className="container-nav">
+      <div className="container-nav flex items-center justify-between px-4 py-2">
         {/* Logo */}
-        <a href="/" className="flex items-center">
+        <a href={isEn ? "/en/" : "/"} className="flex items-center">
           <img src="/logo.png" alt="Macoti Logo" title="Macoti Logo" />
           <span className="ml-2 text-xl font-bold">Macoti</span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6 items-center">
           {listItems.map((item) => (
             <motion.a
               key={item.id}
@@ -60,6 +66,45 @@ function Navbar() {
               {item.name}
             </motion.a>
           ))}
+
+          {/* Language Toggle Pill */}
+          <button
+            onClick={toggleLanguage}
+            disabled={isAnimating}
+            aria-label="Toggle language"
+            className="ml-6 relative w-16 h-8 rounded-full bg-gray-300 cursor-pointer focus:outline-none"
+          >
+            <motion.div
+              layout
+              transition={{ type: "spring", stiffness: 700, damping: 30 }}
+              className="absolute top-1 left-1 w-6 h-6 rounded-full bg-yellow-400 shadow-lg"
+              animate={{ x: isEn ? 32 : 0 }}
+              onAnimationComplete={() => {
+                if (isAnimating) {
+                  // Cambiar página solo cuando termina la animación
+                  if (isEn) {
+                    window.location.href = "/en/";
+                  } else {
+                    window.location.href = "/";
+                  }
+                }
+              }}
+            />
+            <span
+              className={`absolute left-2 top-2 text-xs font-semibold select-none ${
+                !isEn ? "text-black" : "text-gray-500"
+              }`}
+            >
+              ES
+            </span>
+            <span
+              className={`absolute right-2 top-2 text-xs font-semibold select-none ${
+                isEn ? "text-black" : "text-gray-500"
+              }`}
+            >
+              EN
+            </span>
+          </button>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -109,7 +154,10 @@ function Navbar() {
             {/* Footer */}
             <footer className="w-full py-4 bg-gray-100 text-center text-sm">
               <p className="text-gray-600">
-                © {year} Macoti. Todos los derechos reservados.
+                © {year} Macoti.{" "}
+                {isEn
+                  ? "All rights reserved."
+                  : "Todos los derechos reservados."}
               </p>
             </footer>
           </motion.div>
