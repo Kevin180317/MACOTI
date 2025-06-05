@@ -1,13 +1,21 @@
 ---
 const isEn = Astro.url.pathname.startsWith("/en/");
+import AboutImage from "@components/AboutImage";
 ---
 
 <main>
   <section class="container flex items-center justify-center mx-auto p-4 mt-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-15">
-      <div class="bg-gray-300 h-[500px] animate-pulse rounded-lg">
-        <p></p>
-      </div>
+      <AboutImage
+        client:load
+        images={[
+          "/about_1.jpeg",
+          "/about_2.jpeg",
+          "/about_3.jpeg",
+          "/about_4.jpeg",
+          "/about_5.jpeg",
+        ]}
+      />
 
       <div class="text-left">
         <h2 class="text-3xl font-bold mb-4">
