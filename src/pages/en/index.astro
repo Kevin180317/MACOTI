@@ -2,20 +2,20 @@
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
 import About from "@components/About.astro";
-import Projects from "@components/Projects.astro";
+import Projects from "@components/Projects";
+import Gallery from "@components/Gallery.astro";
 import Contact from "@components/Contact.astro";
 import Footer from "@components/Footer.astro";
-import Gallery from "@components/Gallery.astro";
 ---
 
 <Layout
-  title="Home"
+  title="MACOTI | Home"
   description="Welcome to our website"
   keywords="home, website, example"
 >
   <Hero />
   <About />
-  <Projects />
+  <Projects client:only="react" />
   <Gallery />
   <Contact />
   <hr class="border border-black w-full" />

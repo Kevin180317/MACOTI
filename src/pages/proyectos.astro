@@ -1,62 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer.astro";
-const proyectos = [
-  {
-    titulo: "Proyecto 1",
-    descripcion: "Descripción del proyecto 1.",
-    url: "proyecto1",
-  },
-  {
-    titulo: "Proyecto 2",
-    descripcion: "Descripción del proyecto 2.",
-    url: "proyecto2",
-  },
-  {
-    titulo: "Proyecto 3",
-    descripcion: "Descripción del proyecto 3.",
-    url: "proyecto3",
-  },
-  {
-    titulo: "Proyecto 4",
-    descripcion: "Descripción del proyecto 4.",
-    url: "proyecto4",
-  },
-  {
-    titulo: "Proyecto 5",
-    descripcion: "Descripción del proyecto 5.",
-    url: "proyecto5",
-  },
-];
+import ProjectGallery from "@components/Projects/Gallery";
 ---
 
 <Layout title="MACOTI | Proyectos" description="Macoti" keywords="Proyectos">
-  <main class="container mx-auto px-8 mt-32">
+  <main class="container mx-auto px-6 mt-32">
     <h1
       class="text-4xl font-extrabold text-center mb-12 uppercase text-gray-800"
     >
       Nuestros Proyectos
     </h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        proyectos.map((proyecto) => (
-          <div class="relative group bg-gray-300 rounded-lg shadow-lg animate-pulse overflow-hidden">
-            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4">
-              <h2 class="text-xl font-bold mb-2">{proyecto.titulo}</h2>
-              <p class="text-sm mb-4">{proyecto.descripcion}</p>
-              <a
-                href={`/proyectos/${proyecto.url}/`}
-                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-              >
-                Ver más
-              </a>
-            </div>
-            <div class="h-80 w-full" />
-          </div>
-        ))
-      }
-    </div>
-    <hr class="mt-8" />
+    <ProjectGallery client:only="react" />
+    <hr class="my-12" />
     <Footer />
   </main>
 </Layout>
