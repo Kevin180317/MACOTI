@@ -1,63 +1,163 @@
 ---
-const services = [
+const isEn = Astro.url.pathname.startsWith("/en/");
+
+const servicestext = [
   {
-    titulo: "Maquinado",
+    titulo: isEn
+      ? "CNC Machining Services in 3 to 5 Axes with MACOTI "
+      : "Servicios de Maquinado CNC en 3 a 5 Ejes con MACOTI ",
     elementos: {
-      S1: "Moldes de inyección de plástico y partes de repuesto",
-      S2: "Moldes de termo formado",
-      S3: "Troqueles",
-      S4: "Estaciones de trabajo (Automatización)",
-      S5: "Dados de Suaje y sellado por radio frecuencia",
-      S6: "Fixturas",
-      S7: "Soldadura",
-      S8: "Die Casting (operaciones secundarias)",
+      T1: isEn
+        ? "At MACOTI, we offer specialized CNC machining services in 3, 4 and 5 axis, designed to give life to your most complex and high precision projects. Our advanced machinery and our highly trained technical team allow us to manufacture intricate components with perfect finishes, complying with the strictest standards of quality and punctuality."
+        : "En MACOTI, ofrecemos servicios especializados de maquinado CNC en 3, 4 y 5 ejes, diseñados para dar vida a tus proyectos más complejos y de alta precisión. Nuestra maquinaria avanzada y nuestro equipo técnico altamente capacitado nos permiten fabricar componentes intricate y con acabados perfectos, cumpliendo con los más estrictos estándares de calidad y puntualidad.",
+      T2: isEn
+        ? "Whether you require prototype manufacturing, small batches or mass production, MACOTI has the technology and experience to offer efficient, innovative solutions tailored to the specific needs of your industry, including medical, aerospace, automotive and more."
+        : "Ya sea que requieras fabricación de prototipos, pequeños lotes o producción en masa, en MACOTI contamos con la tecnología y la experiencia para ofrecer soluciones eficientes, innovadoras y adaptadas a las necesidades específicas de tu industria, incluyendo la médica, aeroespacial, automotriz, y más.",
+      T3: isEn
+        ? "Trust MACOTI to transform your ideas into tangible results with precision and excellence."
+        : "Confía en MACOTI para transformar tus ideas en resultados tangibles con precisión y excelencia.",
     },
   },
   {
-    titulo: "Manufactura",
+    titulo: isEn
+      ? "Integrated Engineering Solutions with MACOTI"
+      : "Soluciones Integrales en Ingeniería con MACOTI",
     elementos: {
-      S1: "Optimización de procesos de maquinado",
-      S2: "Programación 3, 4 y 5 Ejes",
-      S3: "Diseño de herramientas especiales",
-      S4: "Ingeniería Inversa",
+      T1: isEn
+        ? "At MACOTI, we do not just specialize in high-precision machining; we take innovation to the next level through our comprehensive engineering services. From new product design to reverse engineering to optimizing and improving existing components, we are committed to turning ideas into tangible and efficient solutions."
+        : "En MACOTI, no solo nos especializamos en maquinado de alta precisión; llevamos la innovación al siguiente nivel mediante nuestros servicios de ingeniería integral. Desde el diseño de nuevos productos hasta la ingeniería inversa para optimizar y mejorar componentes existentes, estamos comprometidos en convertir ideas en soluciones tangibles y eficientes.",
+      T2: isEn
+        ? "Our team of engineering experts also leads automation projects, helping companies maximize productivity, reduce costs and ensure smarter and safer processes. With advanced technology and a customized approach, at MACOTI we work to accompany you at every stage of development, ensuring high quality results that meet the most rigorous requirements."
+        : "Nuestro equipo de expertos en ingeniería también lidera proyectos de automatización, ayudando a las empresas a maximizar su productividad, reducir costos y garantizar procesos más inteligentes y seguros. Con tecnología avanzada y un enfoque personalizado, en MACOTI trabajamos para acompañarte en cada etapa del desarrollo, asegurando resultados de alta calidad que cumplen con las exigencias más rigurosas.",
+      T3: isEn
+        ? "Trust MACOTI to transform your challenges into opportunities for growth and quality. Together, we can propel your business into the future"
+        : "Confía en MACOTI para transformar tus desafíos en oportunidades de crecimiento y calidad. ¡ Juntos, podemos impulsar tu negocio hacia el futuro",
+    },
+  },
+  {
+    titulo: isEn
+      ? "Specialized Maintenance of Molds and Tooling with MACOTI"
+      : "Mantenimiento Especializado de Moldes y Herramentales con MACOTI",
+    elementos: {
+      T1: isEn
+        ? "At MACOTI, we understand the importance of efficiency and precision in your manufacturing processes. That is why we offer preventive and corrective maintenance services for injection molds, radio frequency dies, dies and special tooling. Our highly trained technical team performs overhauls, repairs and optimizations to ensure that your equipment operates at peak performance, minimizing downtime and extending the life of your tools."
+        : "En MACOTI, entendemos la importancia de la eficiencia y la precisión en tus procesos de fabricación. Por eso, ofrecemos servicios de mantenimiento preventivo y correctivo de moldes de inyección, dados de radiofrecuencia, troqueles y herramentales especiales. Nuestro equipo técnico altamente capacitado realiza revisiones, reparaciones y optimizaciones para garantizar que tus equipos funcionen al máximo rendimiento, minimizando tiempos de inactividad y prolongando la vida útil de tus herramientas.",
+      T2: isEn
+        ? "With a focus on quality and reliability, at MACOTI we are committed to taking care of your investments and ensuring that your productive operations are always running with the precision and efficiency that your business requires."
+        : "Con un enfoque en la calidad y la confiabilidad, en MACOTI estamos comprometidos en cuidar tus inversiones y asegurar que tus operaciones productivas se mantengan siempre en marcha, con la precisión y eficiencia que tu negocio requiere.",
+      T3: isEn
+        ? "Trust us to keep your molds and tooling in the best conditions and boost your company's productivity."
+        : "Confía en nosotros para mantener tus moldes y herramentales en las mejores condiciones y potenciar la productividad de tu empresa.",
+    },
+  },
+];
+
+const services = [
+  {
+    titulo: isEn ? "Machining" : "Maquinado",
+    elementos: {
+      S1: isEn
+        ? "Plastic injection molds and replacement parts"
+        : "Moldes de inyección de plástico y partes de repuesto",
+      S2: isEn ? "Thermoforming molds" : "Moldes de termo formado",
+      S3: isEn ? "Dies" : "Troqueles",
+      S4: isEn
+        ? "Workstations (Automation)"
+        : "Estaciones de trabajo (Automatización)",
+      S5: isEn
+        ? "Radio-frequency socketing and sealing dies"
+        : "Dados de Suaje y sellado por radio frecuencia",
+      S6: isEn ? "Fixtures" : "Fixturas",
+      S7: isEn ? "Welding" : "Soldadura",
+      S8: isEn
+        ? "Die Casting (secondary operations)"
+        : "Die Casting (operaciones secundarias)",
+    },
+  },
+  {
+    titulo: isEn ? "Manufacturing" : "Manufactura",
+    elementos: {
+      S1: isEn
+        ? "Machining process optimization"
+        : "Optimización de procesos de maquinado",
+      S2: isEn ? "3, 4 and 5 Axis Programming" : "Programación 3, 4 y 5 Ejes",
+      S3: isEn
+        ? "Design of special tools"
+        : "Diseño de herramientas especiales",
+      S4: isEn ? "Reverse Engineering" : "Ingeniería Inversa",
     },
   },
   {
     titulo: "Mantenimiento Preventivo y Correctivo",
     elementos: {
-      S1: "Moldes de inyección",
-      S2: "Troqueles",
-      S3: "Dados de Suaje y de sellado por radio frecuencia.",
-      S4: "Moldes de termo formado",
+      S1: isEn ? "Injection molds" : "Moldes de inyección",
+      S2: isEn ? "Dies" : "Troqueles",
+      S3: isEn
+        ? "Radio-frequency die for die cutting and sealing."
+        : "Dados de Suaje y de sellado por radio frecuencia.",
+      S4: isEn ? "Thermoforming molds" : "Moldes de termo formado",
     },
   },
   {
-    titulo: "Entrenamiento",
+    titulo: isEn ? "Training" : "Entrenamiento",
     elementos: {
-      S1: "Capacitación para el uso de maquinaría CNC; Fresadora de 3 a 5 Ejes, Torno, EDM, Wire EDM, Laser, Plasma. Fundamentos básicos de seguridad y operación.",
-      S2: "Operación de maquinaria CNC y programación a pie de máquina.",
-      S3: "Programación CNC (Mastercam 2018)",
+      S1: isEn
+        ? "Training in the use of CNC machinery; 3 to 5 Axis Milling Machine, Lathe, EDM, Wire EDM, Laser, Plasma. Basic fundamentals of safety and operation."
+        : "Capacitación para el uso de maquinaría CNC; Fresadora de 3 a 5 Ejes, Torno, EDM, Wire EDM, Laser, Plasma. Fundamentos básicos de seguridad y operación.",
+      S2: isEn
+        ? "CNC machine operation and on machine programming."
+        : "Operación de maquinaria CNC y programación a pie de máquina.",
+      S3: isEn
+        ? "CNC programming (Mastercam 2018)"
+        : "Programación CNC (Mastercam 2018)",
     },
   },
 ];
+
+const maxLength = Math.max(servicestext.length, services.length);
 ---
 
 <main class="px-6 py-12">
-  <h2 class="text-3xl font-bold text-center mb-8">Nuestros Servicios</h2>
+  <h2 class="text-3xl font-bold text-center mb-8">
+    {isEn ? "Our Services" : "Nuestros Servicios"}
+  </h2>
 
   <div
     class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 container mx-auto"
   >
     {
-      services.map((service) => (
-        <div class="bg-white shadow-md rounded-lg p-6">
-          <h3 class="text-xl font-semibold mb-4">{service.titulo}</h3>
-          <ul class="list-disc list-inside text-gray-600 space-y-2">
-            {Object.values(service.elementos).map((elemento) => (
-              <li>{elemento}</li>
-            ))}
-          </ul>
-        </div>
+      Array.from({ length: maxLength }).map((_, index) => (
+        <>
+          {servicestext[index] && (
+            <div class="bg-white shadow-md rounded-lg p-6">
+              <h3 class="text-2xl font-semibold mb-4">
+                {servicestext[index].titulo}
+              </h3>
+              <p class="text-gray-600 mb-4">
+                {servicestext[index].elementos.T1}
+              </p>
+              <p class="text-gray-600 mb-4">
+                {servicestext[index].elementos.T2}
+              </p>
+              <p class="text-gray-600 mb-4">
+                {servicestext[index].elementos.T3}
+                {index === 1 ? <span class="exclamation">!</span> : null}
+              </p>
+            </div>
+          )}
+          {services[index] && (
+            <div class="bg-white shadow-md rounded-lg p-6">
+              <h3 class="text-2xl font-semibold mb-4">
+                {services[index].titulo}
+              </h3>
+              <ul class="list-disc list-inside text-gray-600 space-y-2">
+                {Object.values(services[index].elementos).map((elemento, i) => (
+                  <li>{elemento}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
       ))
     }
   </div>

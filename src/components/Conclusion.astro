@@ -1,0 +1,15 @@
+---
+const isEn = Astro.url.pathname.startsWith("/en/");
+---
+
+<main>
+  <section class="container mx-auto mb-8 p-4">
+    <p class="text-gray-600 text-xl">
+      {
+        isEn
+          ? "MACOTI is a company specialized in high precision CNC machining services (3 to 5 axis), engineering from scratch and reverse engineering, automation projects, maintenance of injection molds, radio frequency dies, dies and special tooling. In addition, it focuses on various industrial sectors, including medical, aerospace, automotive, beverage and others. The company has a solid track record since 2018, with robust equipment, advanced technologies and a commitment to quality, timeliness and personalized attention."
+          : "MACOTI es una empresa especializada en servicios de maquinado CNC de alta precisión (en 3 a 5 ejes), ingeniería desde cero e ingeniería inversa, proyectos de automatización, mantenimiento de moldes de inyección, dados de radiofrecuencia, troqueles y herramentales especiales. Además, se enfoca en diversos sectores industriales, incluyendo la médica, aeroespacial, automotriz, bebidas y otros. La empresa tiene una trayectoria sólida desde 2018, con un equipo robusto, tecnologías avanzadas y un compromiso con la calidad, puntualidad y atención personalizada."
+      }
+    </p>
+  </section>
+</main>

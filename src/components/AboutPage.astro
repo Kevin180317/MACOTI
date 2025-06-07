@@ -1,59 +1,94 @@
 ---
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const isEn = Astro.url.pathname.startsWith("/en/");
 
 const elementos = [
   {
-    titulo: t("aboutus.mission"),
-    descripcion: t("aboutus.mission.text"),
+    titulo: isEn
+              ? "Mission"
+              : "Misión",
+    descripcion: isEn
+              ? "At MACOTI, our mission is to offer high precision CNC machining services, providing efficient, reliable and customized solutions in the manufacturing of metallic and non-metallic components. We are committed to ensuring quality, timeliness and excellence in every project to meet the needs of our customers in the medical, aerospace, automotive, beverage and other industrial sectors."
+              : "En MACOTI, nuestra misión es ofrecer servicios de maquinado CNC de alta precisión, brindando soluciones eficientes, confiables y personalizadas en la fabricación de componentes metálicos y no metálicos. Nos comprometemos a asegurar la calidad, puntualidad y excelencia en cada proyecto para satisfacer las necesidades de nuestros clientes en las industrias médica, aeroespacial, automotriz, de bebidas y otros sectores industriales.",
   },
   {
-    titulo: t("aboutus.vision"),
-    descripcion: t("aboutus.vision.text"),
+    titulo: isEn
+              ? "Vision"
+              : "Visión",
+    descripcion: isEn
+              ? "To be recognized leaders in the national market in CNC machining services, constantly innovating in technology and processes to stay at the forefront. We strive to strengthen our relationships with customers and partners, consolidating our prestige as a reliable, innovative and committed to excellence in the manufacture of high precision components."
+              : "Ser líderes reconocidos en el mercado nacional en servicios de maquinado CNC, innovando constantemente en tecnología y procesos para mantenernos a la vanguardia. Nos esforzamos por fortalecer nuestras relaciones con clientes y socios, consolidando nuestro prestigio como una empresa confiable, innovadora y comprometida con la excelencia en la manufactura de componentes de alta precisión.",
   },
   {
-    titulo: t("aboutus.values."),
+    titulo: isEn
+              ? "Values of MACOTI"
+              : "Valores de MACOTI",
     descripcion: {
       V1: {
-        Titulo: t("aboutus.values.title1"),
-        Texto: t("aboutus.values.text1"),
+        Titulo: isEn
+              ? "Quality"
+              : "Calidad",
+        Texto: isEn
+              ? "We are committed to providing the highest quality services, ensuring accuracy, reliability and excellence in every project to exceed our customers' expectations."
+              : "Nos comprometemos a ofrecer servicios de la más alta calidad, asegurando precisión, fiabilidad y excelencia en cada proyecto para superar las expectativas de nuestros clientes.",
       },
       V2: {
-        Titulo: t("aboutus.values.title2"),
-        Texto: t("aboutus.values.text2"),
+        Titulo: isEn
+              ? "Innovation"
+              : "Innovación",
+        Texto: isEn
+              ? "We encourage constant innovation in technology, processes and solutions to stay at the forefront of the machining and engineering industry."
+              : "Fomentamos la innovación constante en tecnología, procesos y soluciones para mantenernos a la vanguardia en la industria del maquinado y la ingeniería.",
       },
       V3: {
-        Titulo: t("aboutus.values.title3"),
-        Texto: t("aboutus.values.text3"),
+        Titulo: isEn
+              ? "Commitment"
+              : "Compromiso",
+        Texto: isEn
+              ? "We are fully dedicated to satisfy the needs of our customers, meeting the established deadlines and providing personalized and reliable attention."
+              : "Nos dedicamos plenamente a satisfacer las necesidades de nuestros clientes, cumpliendo con los plazos establecidos y brindando atención personalizada y confiable.",
       },
       V4: {
-        Titulo: t("aboutus.values.title4"),
-        Texto: t("aboutus.values.text4"),
+        Titulo: isEn
+              ? "Teamwork"
+              : "Trabajo en Equipo",
+        Texto: isEn
+              ? "We value collaboration and respect among our team, promoting a work environment where communication and joint effort generate better results."
+              : "Valoramos la colaboración y el respeto entre nuestro equipo, promoviendo un ambiente de trabajo donde la comunicación y el esfuerzo conjunto generan mejores resultados.",
       },
       V5: {
-        Titulo: t("aboutus.values.title5"),
-        Texto: t("aboutus.values.text5"),
+        Titulo: isEn
+              ? "Responsibility"
+              : "Responsabilidad",
+        Texto: isEn
+              ? "We act with integrity and responsibility, caring for the environment and promoting sustainable practices in all our processes."
+              : "Actuamos con integridad y responsabilidad, cuidando el medio ambiente y promoviendo prácticas sostenibles en todos nuestros procesos.",
       },
       V6: {
-        Titulo: t("aboutus.values.title6"),
-        Texto: t("aboutus.values.text6"),
-      }
+        Titulo: isEn
+              ? "Customer Focus"
+              : "Orientación al Cliente",
+        Texto: isEn
+              ? "Our main focus is to understand and solve our customers' needs, offering efficient solutions tailored to their specific requirements."
+              : "Nuestro enfoque principal es entender y resolver las necesidades de nuestros clientes, ofreciendo soluciones eficientes y adaptadas a sus requerimientos específicos.",
+      },
     },
   },
 ];
 ---
 
 <main class="px-6 py-12">
-  <h1 class="text-3xl font-bold text-center mb-8">{t("aboutus.title")}</h1>
+  <h1 class="text-3xl font-bold text-center mb-8">{
+            isEn
+              ? "About Us"
+              : "Acerca de Nosotros"
+          }</h1>
   <div
     class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 container mx-auto"
   >
     {
       elementos.map((item) => (
         <div class="bg-white shadow-md rounded-lg p-6">
-          <h2 class="text-xl font-semibold mb-4">{item.titulo}</h2>
+          <h2 class="text-2xl font-semibold mb-4">{item.titulo}</h2>
           {typeof item.descripcion === "string" ? (
             <p class="text-gray-600">{item.descripcion}</p>
           ) : (

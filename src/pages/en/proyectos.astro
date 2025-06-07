@@ -1,0 +1,19 @@
+---
+const isEn = Astro.url.pathname.startsWith("/en/");
+import Layout from "@layouts/Layout.astro";
+import Footer from "@components/Footer.astro";
+import ProjectGallery from "@components/Projects/Gallery";
+---
+
+<Layout title="MACOTI | Proyectos" description="Macoti" keywords="Proyectos">
+  <main class="container mx-auto px-6 mt-32">
+    <h1
+      class="text-4xl font-extrabold text-center mb-12 uppercase text-gray-800"
+    >
+      {isEn ? "Our Projects" : "Nuestros Proyectos"}
+    </h1>
+    <ProjectGallery client:only="react" />
+    <hr class="my-12" />
+    <Footer />
+  </main>
+</Layout>

@@ -6,15 +6,25 @@ const isEn = Astro.url.pathname.startsWith("/en/");
 ---
 
 <footer class="pt-8">
+  <div class="container mx-auto px-4">
+    <hr class="mb-8" />
+  </div>
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Sobre nosotros</h3>
+        <h3 class="font-semibold mb-4 text-3xl">
+          {isEn ? "About Us" : "Sobre nosotros"}
+        </h3>
         <div class="space-y-2 flex flex-col">
           <p class="text-gray-600">
-            En MACOTI Contamos con amplia experiencia en la industria
-            metalmecánica, con participación en áreas médicas, aeroespacial y
-            automotriz. <br />Nos ponemos a sus órdenes:
+            {
+              isEn
+                ? "In MACOTI we have extensive experience in the metal-mechanic industry, with participation in medical, aerospace and automotive areas. "
+                : "En MACOTI Contamos con amplia experiencia en la industria metalmecánica, con participación en áreas médicas, aeroespacial y automotriz."
+            }
+            <br />{
+              isEn ? "We are at your service:" : "Nos ponemos a sus órdenes:"
+            }
           </p>
           <a
             href="tel:+526643748031"
@@ -30,26 +40,46 @@ const isEn = Astro.url.pathname.startsWith("/en/");
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Funciones</h3>
+        <h3 class="font-semibold mb-4 text-3xl">
+          {isEn ? "Features" : "Funciones"}
+        </h3>
         <ul class="space-y-2 text-gray-600">
-          <li><a href="/" class="hover:text-[#f79428]">Inicio</a></li>
           <li>
-            <a href="/acerca-de/" class="hover:text-[#f79428]">Acerca de</a>
+            <a href={isEn ? "/en/" : "/"} class="hover:text-[#f79428]"
+              >{isEn ? "Home" : "Inicio"}</a
+            >
           </li>
           <li>
-            <a href="/proyectos/" class="hover:text-[#f79428]">Proyectos</a>
+            <a
+              href={isEn ? "/en/acerca-de/" : "/acerca-de/"}
+              class="hover:text-[#f79428]">{isEn ? "About Us" : "Acerca de"}</a
+            >
           </li>
           <li>
-            <a href="/servicios/" class="hover:text-[#f79428]">Servicios</a>
+            <a
+              href={isEn ? "/en/proyectos/" : "/proyectos/"}
+              class="hover:text-[#f79428]">{isEn ? "Projects" : "Proyectos"}</a
+            >
           </li>
           <li>
-            <a href="/contacto/" class="hover:text-[#f79428]">Contacto</a>
+            <a
+              href={isEn ? "/en/servicios/" : "/servicios/"}
+              class="hover:text-[#f79428]">{isEn ? "Services" : "Servicios"}</a
+            >
+          </li>
+          <li>
+            <a
+              href={isEn ? "/en/contacto/" : "/contacto/"}
+              class="hover:text-[#f79428]">{isEn ? "Contact" : "Contacto"}</a
+            >
           </li>
         </ul>
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Síguenos en</h3>
+        <h3 class="font-semibold mb-4 text-3xl">
+          {isEn ? "Follow Us" : "Síguenos en"}
+        </h3>
         <ul class="space-y-2 text-gray-600">
           <li class="flex items-center space-x-2">
             <div class="bg-[#1877F2] p-2 rounded-full">
@@ -75,24 +105,39 @@ const isEn = Astro.url.pathname.startsWith("/en/");
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4 text-3xl">Enlaces de interés</h3>
+        <h3 class="font-semibold mb-4 text-3xl">
+          {isEn ? "Useful Links" : "Enlaces de interés"}
+        </h3>
         <ul class="space-y-2 text-gray-600">
           <li>
-            <a href="/politica-de-servicio/" class="hover:text-[#f79428]"
-              >Política de Servicio</a
-            >
+            <a
+              href={isEn
+                ? "/en/politica-de-servicio/"
+                : "/politica-de-servicio/"}
+              class="hover:text-[#f79428]"
+              >{isEn ? "Service Policy" : "Política de Servicio"}
+            </a>
           </li>
           <li>
-            <a href="/terminos-y-condiciones/" class="hover:text-[#f79428]"
-              >Términos y Condiciones</a
-            >
+            <a
+              href={isEn
+                ? "/en/terminos-y-condiciones/"
+                : "/terminos-y-condiciones/"}
+              class="hover:text-[#f79428]"
+              >{isEn ? "Terms and Conditions" : "Términos y Condiciones"}
+            </a>
           </li>
         </ul>
       </div>
     </div>
 
     <div class="border-t-2 border-black pt-4 pb-4 text-center text-gray-600">
-      &copy; {new Date().getFullYear()} MACOTI. Todos los derechos reservados.
+      &copy; {new Date().getFullYear()}
+      {
+        isEn
+          ? "MACOTI. All rights reserved."
+          : "MACOTI. Todos los derechos reservados."
+      }
     </div>
   </div>
 </footer>
