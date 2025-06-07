@@ -1,29 +1,33 @@
 ---
-
+const isEn = Astro.url.pathname.startsWith("/en/");
 ---
 
 <main class="my-8">
   <h1 class="text-3xl font-bold mb-8 container px-4 mx-auto">
-    Comprometidos con la calidad
+    {isEn ? "Committed to quality" : "Comprometidos con la calidad"}
   </h1>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
     <img
       src="/gallery1.jpeg"
+      loading="lazy"
       alt="Galería 1"
       class="h-96 w-full object-cover border"
     />
     <img
       src="/gallery2.jpeg"
+      loading="lazy"
       alt="Galería 2"
       class="h-96 w-full object-cover border"
     />
     <img
       src="/gallery3.jpeg"
+      loading="lazy"
       alt="Galería 3"
       class="h-96 w-full object-cover border"
     />
     <img
       src="/gallery4.jpeg"
+      loading="lazy"
       alt="Galería 4"
       class="h-96 w-full object-cover border"
     />
