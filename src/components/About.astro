@@ -1,10 +1,30 @@
 ---
-const isEn = Astro.url.pathname.startsWith("/en/");
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 import AboutImage from "@components/AboutImage";
 ---
 
 <main>
-  <section class="container flex items-center justify-center mx-auto p-4 mt-8">
+  <section
+    class="container flex-col items-center justify-center mx-auto p-4 mt-8"
+  >
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-4">
+        {t("intro.title")}
+      </h2>
+      <p class="text-gray-600 text-xl mb-4">
+        {t("intro.text1")}
+      </p>
+      <p class="text-gray-600 text-lg mb-4">
+        {t("intro.text2")}
+      </p>
+      <p class="text-gray-600 text-lg">
+        {t("intro.text3")}
+      </p>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-15">
       <AboutImage
         client:load
@@ -19,21 +39,19 @@ import AboutImage from "@components/AboutImage";
 
       <div class="text-left">
         <h2 class="text-3xl font-bold mb-4">
-          {isEn ? "About Us" : "Sobre Nosotros"}
+          {t("about.title")}
         </h2>
         <p class="text-gray-600 text-xl mb-4">
-          {
-            isEn
-              ? "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente consequatur tempore illum aliquam culpa hic officia veniam, dignissimos fugiat quidem nam corrupti temporibus quo optio molestias, dolores incidunt minus, est nihil sed quibusdam? Cum magni ratione totam, omnis ab iusto recusandae unde impedit ipsum, odio rem quasi possimus autem tempore."
-              : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequatur tempore illum aliquam culpa hic officia veniam, dignissimos fugiat quidem nam corrupti temporibus quo optio molestias, dolores incidunt minus, est nihil sed quibusdam? Cum magni ratione totam, omnis ab iusto recusandae unde impedit ipsum, odio rem quasi possimus autem tempore."
-          }
+          {t("about.text1")}
         </p>
         <p class="text-gray-600 text-lg">
-          {
-            isEn
-              ? "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae quis qui impedit reprehenderit velit consectetur magnam iusto aliquam id ad ea, vel distinctio sequi, sed doloribus, aliquid culpa. Aliquid vitae, hic dolor nulla voluptatum aliquam."
-              : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quis qui impedit reprehenderit velit consectetur magnam iusto aliquam id ad ea, vel distinctio sequi, sed doloribus, aliquid culpa. Aliquid vitae, hic dolor nulla voluptatum aliquam."
-          }
+          {t("about.text2")}
+        </p>
+        <p class="text-gray-600 text-lg mb-4">
+          {t("about.text3")}
+        </p>
+        <p class="text-gray-600 text-lg">
+          {t("about.text4")}
         </p>
       </div>
     </div>
