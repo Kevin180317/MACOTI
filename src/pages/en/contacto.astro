@@ -5,11 +5,7 @@ import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 const isEn = Astro.url.pathname.startsWith("/en/");
 ---
 
-<Layout
-  title="MACOTI | Contacto"
-  description="Macoti ayuda a realizar tus proyectos"
-  keywords="Macoti, Maquinado, Especializado"
->
+<Layout>
   <main class="container mx-auto px-8 mt-32">
     <h1 class="text-3xl font-bold text-start uppercase text-gray-800">
       {
@@ -50,19 +46,19 @@ const isEn = Astro.url.pathname.startsWith("/en/");
         </p>
       </div>
       <div>
-        <h2 class="text-2xl font-semibold text-gray-800">
+        <h2 class="text-lg font-semibold text-gray-800">
           {isEn ? "Our Office" : "Nuestra Oficina"}
           <p class="mt-4 text-gray-600 flex items-center">
-            <FaPhoneAlt className="mr-2 text-blue-500" />
-            <a href="tel:6643748031" class="text-blue-500 hover:underline"
+            <FaPhoneAlt className="mr-2 text-principal" />
+            <a href="tel:6643748031" class="text-principal hover:underline"
               >6643748031</a
             >
           </p>
           <p class="mt-2 text-gray-600 flex items-center">
-            <FaEnvelope className="mr-2 text-blue-500" />
+            <FaEnvelope className="mr-2 text-principal" />
             <a
               href="mailto:MACOTI.Ricardo@gmail.com"
-              class="text-blue-500 hover:underline">MACOTI.Ricardo@gmail.com</a
+              class="text-principal hover:underline">MACOTI.Ricardo@gmail.com</a
             >
           </p>
         </h2>

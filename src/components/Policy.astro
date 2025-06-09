@@ -1,0 +1,52 @@
+---
+const isEn = Astro.url.pathname.startsWith("/en/");
+
+const elementos = [
+  {
+    id: 1,
+    titulo: isEn ? "Quality Assurance" : "Garantía de Calidad",
+    descripcion: isEn
+      ? "MACOTI ensures high precision and quality in all machining and manufacturing processes using advanced CNC technology."
+      : "MACOTI garantiza alta precisión y calidad en todos los procesos de maquinado y manufactura utilizando tecnología CNC avanzada.",
+  },
+  {
+    id: 2,
+    titulo: isEn ? "Project Timeline" : "Plazos del Proyecto",
+    descripcion: isEn
+      ? "We commit to timely delivery as per the agreed schedule, though unforeseen circumstances may affect deadlines."
+      : "Nos comprometemos a la entrega puntual según el cronograma acordado, aunque circunstancias imprevistas puedan afectar los plazos.",
+  },
+  {
+    id: 3,
+    titulo: isEn ? "Customer Support" : "Atención al Cliente",
+    descripcion: isEn
+      ? "Our team is available for consultation, design assistance, and maintenance support throughout the project lifecycle."
+      : "Nuestro equipo está disponible para consultas, asistencia en diseño y soporte de mantenimiento durante todo el ciclo de vida del proyecto.",
+  },
+];
+---
+
+<main class="px-6 py-12 gap-8 container mx-auto">
+  <h1 class="text-3xl font-bold mb-8">
+    {isEn ? "Service Policy" : "Política de Servicio"}
+  </h1>
+  <p class="text-gray-700 mb-8 text-lg">
+    {
+      isEn
+        ? "At MACOTI, we are committed to delivering reliable and efficient machining solutions tailored to your industry needs."
+        : "En MACOTI, estamos comprometidos a ofrecer soluciones de maquinado confiables y eficientes adaptadas a las necesidades de tu industria."
+    }
+  </p>
+  <div class="flex flex-col gap-8">
+    {
+      elementos.map((item) => (
+        <section>
+          <h2 class="text-xl font-semibold mb-4">
+            {item.id}. {item.titulo}
+          </h2>
+          <p class="text-gray-600">{item.descripcion}</p>
+        </section>
+      ))
+    }
+  </div>
+</main>

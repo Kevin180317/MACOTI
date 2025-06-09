@@ -41,16 +41,11 @@ export default function Proyectos() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const path = window.location.pathname;
+
       if (path.startsWith("/en/")) {
         setLanguage("en");
-        window.localStorage.setItem("language", "en");
       } else {
-        const savedLanguage = window.localStorage.getItem("language");
-        if (savedLanguage === "es" || savedLanguage === "en") {
-          setLanguage(savedLanguage);
-        } else {
-          setLanguage("es");
-        }
+        setLanguage("es");
       }
     }
   }, []);

@@ -4,28 +4,33 @@ import "@styles/global.css";
 import Navbar from "@components/Navbar";
 import { ClientRouter } from "astro:transitions";
 
-interface Props {
-  title: string;
-  description: string;
-  keywords: string;
-}
-
 const { title, description, keywords } = Astro.props;
+
+const LANG = Astro.url.pathname.startsWith("/en/");
+
+const URL = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={LANG ? "en" : "es"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo.ico" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
-
-    <title>
-      {title}
-    </title>
+    <meta
+      name="description"
+      content="En MACOTI ofrecemos servicios integrales de maquinado CNC de 3 a 5 ejes, maquinaria convencional y mantenimiento de herramientas. Soluciones confiables y a tiempo para las industrias médica, aeroespacial, automotriz y más."
+    />
+    <meta
+      name="keywords"
+      content="maquinado CNC, maquinaria CNC, maquinado de precisión, manufactura industrial, maquinado 5 ejes, ingeniería industrial, mantenimiento de herramientas, maquinado para industria médica, maquinado aeroespacial, componentes metálicos, fabricación de piezas, soluciones industriales, servicios de maquinado"
+    />
+    <title>MACOTI | Maquinado CNC de Alta Precisión para Industrias</title>
+    <link rel="canonical" href={URL} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Macoti " />
+    <meta name="publisher" content="Macoti" />
     <ClientRouter />
   </head>
   <body class="overflow-x-hidden">

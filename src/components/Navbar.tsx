@@ -11,22 +11,40 @@ function Navbar() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const path = window.location.pathname;
-      setIsEn(path.startsWith("/en/"));
+      setIsEn(path.startsWith("/en"));
     }
   }, []);
+
+  const getTranslatedPath = () => {
+    if (typeof window === "undefined") return "/";
+
+    const currentPath = window.location.pathname;
+
+    if (currentPath.startsWith("/en")) {
+      // Cambiar a español quitando /en
+      const spanishPath = currentPath.replace(/^\/en/, "") || "/";
+      return spanishPath.endsWith("/") ? spanishPath : spanishPath + "/";
+    } else {
+      // Cambiar a inglés agregando /en
+      const englishPath = currentPath === "/" ? "/en/" : `/en${currentPath}`;
+      return englishPath.endsWith("/") ? englishPath : englishPath + "/";
+    }
+  };
 
   const listItems = isEn
     ? [
         { id: 1, name: "Home", link: "/en/" },
         { id: 2, name: "About", link: "/en/acerca-de/" },
         { id: 3, name: "Services", link: "/en/servicios/" },
-        { id: 4, name: "Contact", link: "/en/contacto/" },
+        { id: 4, name: "Projects", link: "/en/proyectos/" },
+        { id: 5, name: "Contact", link: "/en/contacto/" },
       ]
     : [
         { id: 1, name: "Inicio", link: "/" },
         { id: 2, name: "Acerca de", link: "/acerca-de/" },
         { id: 3, name: "Servicios", link: "/servicios/" },
-        { id: 4, name: "Contacto", link: "/contacto/" },
+        { id: 4, name: "Proyectos", link: "/proyectos/" },
+        { id: 5, name: "Contacto", link: "/contacto/" },
       ];
 
   const toggleMenu = () => {
@@ -34,9 +52,16 @@ function Navbar() {
   };
 
   const toggleLanguage = () => {
-    if (isAnimating) return; // evitar múltiples clicks
+    if (isAnimating) return;
     setIsAnimating(true);
-    setIsEn((prev) => !prev); // Cambiar estado para mover la píldora
+    setIsEn((prev) => !prev);
+  };
+
+  const handleLanguageAnimationComplete = () => {
+    if (isAnimating) {
+      const newPath = getTranslatedPath();
+      window.location.href = newPath;
+    }
   };
 
   const menuVariants = {
@@ -44,6 +69,37 @@ function Navbar() {
     visible: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: "100%" },
   };
+
+  const LanguageToggle = (
+    <button
+      onClick={toggleLanguage}
+      disabled={isAnimating}
+      aria-label="Toggle language"
+      className="relative w-16 h-8 rounded-full bg-gray-300 cursor-pointer focus:outline-none"
+    >
+      <motion.div
+        layout
+        transition={{ type: "spring", stiffness: 700, damping: 30 }}
+        className="absolute top-1 left-1 w-6 h-6 rounded-full bg-yellow-400 shadow-lg"
+        animate={{ x: isEn ? 32 : 0 }}
+        onAnimationComplete={handleLanguageAnimationComplete}
+      />
+      <span
+        className={`absolute left-2 top-2 text-xs font-semibold select-none ${
+          !isEn ? "text-black" : "text-gray-500"
+        }`}
+      >
+        ES
+      </span>
+      <span
+        className={`absolute right-2 top-2 text-xs font-semibold select-none ${
+          isEn ? "text-black" : "text-gray-500"
+        }`}
+      >
+        EN
+      </span>
+    </button>
+  );
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white text-black border-b border-gray-300 shadow-md z-50">
@@ -67,44 +123,8 @@ function Navbar() {
             </motion.a>
           ))}
 
-          {/* Language Toggle Pill */}
-          <button
-            onClick={toggleLanguage}
-            disabled={isAnimating}
-            aria-label="Toggle language"
-            className="ml-6 relative w-16 h-8 rounded-full bg-gray-300 cursor-pointer focus:outline-none"
-          >
-            <motion.div
-              layout
-              transition={{ type: "spring", stiffness: 700, damping: 30 }}
-              className="absolute top-1 left-1 w-6 h-6 rounded-full bg-yellow-400 shadow-lg"
-              animate={{ x: isEn ? 32 : 0 }}
-              onAnimationComplete={() => {
-                if (isAnimating) {
-                  // Cambiar página solo cuando termina la animación
-                  if (isEn) {
-                    window.location.href = "/en/";
-                  } else {
-                    window.location.href = "/";
-                  }
-                }
-              }}
-            />
-            <span
-              className={`absolute left-2 top-2 text-xs font-semibold select-none ${
-                !isEn ? "text-black" : "text-gray-500"
-              }`}
-            >
-              ES
-            </span>
-            <span
-              className={`absolute right-2 top-2 text-xs font-semibold select-none ${
-                isEn ? "text-black" : "text-gray-500"
-              }`}
-            >
-              EN
-            </span>
-          </button>
+          {/* Language Toggle */}
+          <div className="ml-6">{LanguageToggle}</div>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -149,6 +169,9 @@ function Navbar() {
                   {item.name}
                 </motion.a>
               ))}
+
+              {/* Language Toggle in Mobile */}
+              <div className="mt-6">{LanguageToggle}</div>
             </div>
 
             {/* Footer */}

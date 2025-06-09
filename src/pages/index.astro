@@ -9,11 +9,7 @@ import Footer from "@components/Footer.astro";
 import Conclusion from "@components/Conclusion.astro";
 ---
 
-<Layout
-  title="MACOTI | Home"
-  description="Welcome to our website"
-  keywords="home, website, example"
->
+<Layout>
   <Hero />
   <About />
   <Projects client:only="react" />
