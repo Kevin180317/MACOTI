@@ -6,11 +6,7 @@ const isEn = Astro.url.pathname.startsWith("/en/");
   <h1 class="text-4xl font-bold text-gray-800 mb-8">
     {isEn ? "Contact Form" : "Formulario de contacto"}
   </h1>
-  <form
-    action="/submit"
-    method="POST"
-    class="w-full bg-white p-6 rounded-lg shadow-md"
-  >
+  <form id="contact-form" class="w-full bg-white p-6 rounded-lg shadow-md">
     <div class="mb-4">
       <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
         {isEn ? "Name:" : "Nombre:"}
@@ -56,4 +52,25 @@ const isEn = Astro.url.pathname.startsWith("/en/");
       {isEn ? "Submit" : "Enviar"}
     </button>
   </form>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        const recipient = "MACOTI.Ricardo@gmail.com"; // 👈 Cámbialo por el correo de destino
+        const subject = `Nuevo mensaje desde el formulario de contacto`;
+        const body = `Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${message}`;
+
+        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoLink;
+      });
+    });
+  </script>
 </main>
