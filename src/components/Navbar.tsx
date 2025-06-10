@@ -37,14 +37,16 @@ function Navbar() {
         { id: 2, name: "About", link: "/en/acerca-de/" },
         { id: 3, name: "Services", link: "/en/servicios/" },
         { id: 4, name: "Projects", link: "/en/proyectos/" },
-        { id: 5, name: "Contact", link: "/en/contacto/" },
+        { id: 5, name: "Blogs", link: "/en/blogs/" },
+        { id: 6, name: "Contact", link: "/en/contacto/" },
       ]
     : [
         { id: 1, name: "Inicio", link: "/" },
         { id: 2, name: "Acerca de", link: "/acerca-de/" },
         { id: 3, name: "Servicios", link: "/servicios/" },
         { id: 4, name: "Proyectos", link: "/proyectos/" },
-        { id: 5, name: "Contacto", link: "/contacto/" },
+        { id: 5, name: "Blogs", link: "/blogs/" },
+        { id: 6, name: "Contacto", link: "/contacto/" },
       ];
 
   const toggleMenu = () => {
@@ -107,7 +109,7 @@ function Navbar() {
         {/* Logo */}
         <a href={isEn ? "/en/" : "/"} className="flex items-center">
           <img src="/logo.png" alt="Macoti Logo" title="Macoti Logo" />
-          <span className="ml-2 text-xl font-bold">Macoti</span>
+          <span className="ml-2 text-xl font-bold">MACOTI</span>
         </a>
 
         {/* Desktop Menu */}

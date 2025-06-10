@@ -32,9 +32,11 @@ const isEn = Astro.url.pathname.startsWith("/en/");
             class="text-[#f79428] hover:underline">6643748031</a
           >
           <a
-            href="mailto:MACOTI.Ricardo@gmail.com"
+            href="mailto:Info@macoti.com.mx"
             target="_blank"
-            class="text-[#f79428] hover:underline">MACOTI.Ricardo@gmail.com</a
+            class="text-[#f79428] hover:underline"
+          >
+            Info@macoti.com.mx</a
           >
         </div>
       </div>
@@ -65,6 +67,13 @@ const isEn = Astro.url.pathname.startsWith("/en/");
             <a
               href={isEn ? "/en/servicios/" : "/servicios/"}
               class="hover:text-[#f79428]">{isEn ? "Services" : "Servicios"}</a
+            >
+          </li>
+
+          <li>
+            <a
+              href={isEn ? "/en/blogs/" : "/blogs/"}
+              class="hover:text-[#f79428]">{isEn ? "Blogs" : "Blogs"}</a
             >
           </li>
           <li>
@@ -132,12 +141,22 @@ const isEn = Astro.url.pathname.startsWith("/en/");
     </div>
 
     <div class="border-t-2 border-black pt-4 pb-4 text-center text-gray-600">
-      &copy; {new Date().getFullYear()}
+      &copy; {new Date().getFullYear()}{" "}
       {
         isEn
           ? "MACOTI. All rights reserved."
           : "MACOTI. Todos los derechos reservados."
       }
+      <br />
+      {isEn ? "Developed by " : "Desarrollado por "}
+      <a
+        href="https://okhuysendev.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-principal hover:underline mt-4"
+      >
+        Kevin Dev
+      </a>
     </div>
   </div>
 </footer>

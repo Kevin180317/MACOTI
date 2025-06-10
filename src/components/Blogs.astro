@@ -1,0 +1,112 @@
+---
+import { FaYoutube, FaTiktok } from "react-icons/fa";
+
+const isEn = Astro.url.pathname.startsWith("/en/");
+
+const cards = [
+  {
+    platform: "YouTube",
+    titleEn: "Automated Enebag 5",
+    titleEs: "Automatizado Enebag 5",
+    descriptionEn:
+      "Simulation of the automation process to join the Enebag ring with the bag.",
+    descriptionEs:
+      "Muestra de simulación de proceso de automatización para unir anillo con Bolsa de Enebag.",
+    link: "https://youtu.be/YU22EuoxmIg?si=aMOnA83t_BwqZT9D",
+    featured: false,
+    Icon: FaYoutube,
+    iconColor: "text-red-600",
+  },
+  {
+    platform: "YouTube",
+    titleEn: "Intro Video: CNC Business",
+    titleEs: "Video Introducción: El Negocio del CNC",
+    descriptionEn:
+      "In our first video, we explain the purpose of this channel, what it means to run a CNC business, the variables to consider, and what you can expect when you subscribe.",
+    descriptionEs:
+      "En este, nuestro primer video, explicaremos el objetivo de este canal, hablamos de lo que implica tener un negocio de CNC, de las variables a considerar y de lo que puedes esperar al inscribirte a nuestro canal.",
+    link: "https://www.youtube.com/watch?v=uOWMieKTTFA&t=263s",
+    featured: false,
+    Icon: FaYoutube,
+    iconColor: "text-red-600",
+  },
+  {
+    platform: "TikTok",
+    titleEn: "@elnegociodelcnc",
+    titleEs: "@elnegociodelcnc",
+    descriptionEn:
+      "Daily CNC inspiration, tips, and behind-the-scenes content on TikTok.",
+    descriptionEs:
+      "Inspiración diaria de CNC, tips y contenido detrás de cámaras en TikTok.",
+    link: "https://www.tiktok.com/@elnegociodelcnc",
+    featured: true,
+    Icon: FaTiktok,
+    iconColor: "text-black",
+  },
+];
+---
+
+<section class="mt-32 container mx-auto px-4 text-center">
+  <h1 class="text-4xl font-bold mb-4 text-principal">
+    {isEn ? "Explore Our Content" : "Explora Nuestro Contenido"}
+  </h1>
+  <p class="text-lg text-gray-600 mb-12">
+    {
+      isEn
+        ? "Check us out on our YouTube and TikTok channels for the latest in CNC business and automation."
+        : "Chécanos en nuestros canales de YouTube y TikTok para lo último en negocio CNC y automatización."
+    }
+  </p>
+
+  <div class="grid gap-8 lg:grid-cols-3 text-left">
+    {
+      cards.map((card) => (
+        <div
+          class={`flex flex-col justify-between rounded-2xl p-6 shadow-md transition-all duration-300 border bg-white h-full
+            ${card.featured ? "border-principal" : "border-gray-300"}`}
+        >
+          {card.featured && (
+            <div class="self-start mb-3 px-3 py-1 text-xs font-semibold text-white bg-principal rounded-full select-none">
+              {isEn ? "Featured" : "Destacado"}
+            </div>
+          )}
+
+          <div>
+            <h2 class="text-2xl font-bold mb-3 flex items-center gap-3 text-black">
+              {isEn ? card.titleEn : card.titleEs}
+            </h2>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              {isEn ? card.descriptionEn : card.descriptionEs}
+            </p>
+          </div>
+
+          <div class="mt-6 flex justify-between items-center">
+            <p class="text-sm font-semibold text-black flex items-center gap-1">
+              <card.Icon className={`${card.iconColor} inline`} />
+              {card.platform}
+            </p>
+            <a
+              href={card.link}
+              target="_blank"
+              class="inline-block rounded-3xl text-center bg-principal text-white font-medium py-2 px-6 hover:opacity-90 transition"
+            >
+              {isEn ? "Watch Now" : "Ver ahora"}
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <section class="mt-16 max-w-4xl mx-auto px-4 text-center">
+    <h3 class="text-3xl font-semibold mb-4 text-principal">
+      {isEn ? "Why Follow Us?" : "¿Por qué seguirnos?"}
+    </h3>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      {
+        isEn
+          ? "Stay updated with cutting-edge automation technologies and CNC business insights. Our videos and daily tips empower you to optimize your processes, increase productivity, and grow your business."
+          : "Mantente al día con las tecnologías más innovadoras en automatización y conocimientos sobre el negocio CNC. Nuestros videos y tips diarios te ayudan a optimizar tus procesos, aumentar la productividad y hacer crecer tu negocio."
+      }
+    </p>
+  </section>
+</section>

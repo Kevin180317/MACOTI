@@ -52,7 +52,6 @@ const isEn = Astro.url.pathname.startsWith("/en/");
       {isEn ? "Submit" : "Enviar"}
     </button>
   </form>
-
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("contact-form");
@@ -63,11 +62,24 @@ const isEn = Astro.url.pathname.startsWith("/en/");
         const email = document.getElementById("email").value;
         const message = document.getElementById("message").value;
 
-        const recipient = "MACOTI.Ricardo@gmail.com"; // 👈 Cámbialo por el correo de destino
+        const recipient = "Info@macoti.com.mx";
+        const cc = "Macoti.ricardo@gmail.com";
         const subject = `Nuevo mensaje desde el formulario de contacto`;
-        const body = `Nombre: ${name}\nCorreo: ${email}\n\nMensaje:\n${message}`;
 
-        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const body = `
+Formulario de contacto recibido
+
+Nombre: ${name}
+Correo electrónico: ${email}
+Fecha: ${new Date().toLocaleString()}
+
+Mensaje:
+${message}
+
+Este correo fue generado automáticamente desde el sitio web de MACOTI.
+      `;
+
+        const mailtoLink = `mailto:${recipient}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
         window.location.href = mailtoLink;
       });
