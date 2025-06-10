@@ -13,9 +13,9 @@ const cards = [
     descriptionEs:
       "Muestra de simulación de proceso de automatización para unir anillo con Bolsa de Enebag.",
     link: "https://youtu.be/YU22EuoxmIg?si=aMOnA83t_BwqZT9D",
-    featured: false,
     Icon: FaYoutube,
     iconColor: "text-red-600",
+    image: "/preview.jpg",
   },
   {
     platform: "YouTube",
@@ -24,11 +24,11 @@ const cards = [
     descriptionEn:
       "In our first video, we explain the purpose of this channel, what it means to run a CNC business, the variables to consider, and what you can expect when you subscribe.",
     descriptionEs:
-      "En este, nuestro primer video, explicaremos el objetivo de este canal, hablamos de lo que implica tener un negocio de CNC, de las variables a considerar y de lo que puedes esperar al inscribirte a nuestro canal.",
+      "En este, nuestro primer video, explicamos el objetivo de este canal, hablamos de lo que implica tener un negocio de CNC, de las variables a considerar y de lo que puedes esperar al inscribirte a nuestro canal.",
     link: "https://www.youtube.com/watch?v=uOWMieKTTFA&t=263s",
-    featured: false,
     Icon: FaYoutube,
     iconColor: "text-red-600",
+    image: "/preview2.jpg",
   },
   {
     platform: "TikTok",
@@ -39,9 +39,9 @@ const cards = [
     descriptionEs:
       "Inspiración diaria de CNC, tips y contenido detrás de cámaras en TikTok.",
     link: "https://www.tiktok.com/@elnegociodelcnc",
-    featured: true,
     Icon: FaTiktok,
     iconColor: "text-black",
+    image: "/preview3.jpg",
   },
 ];
 ---
@@ -61,17 +61,13 @@ const cards = [
   <div class="grid gap-8 lg:grid-cols-3 text-left">
     {
       cards.map((card) => (
-        <div
-          class={`flex flex-col justify-between rounded-2xl p-6 shadow-md transition-all duration-300 border bg-white h-full
-            ${card.featured ? "border-principal" : "border-gray-300"}`}
-        >
-          {card.featured && (
-            <div class="self-start mb-3 px-3 py-1 text-xs font-semibold text-white bg-principal rounded-full select-none">
-              {isEn ? "Featured" : "Destacado"}
-            </div>
-          )}
-
+        <div class="flex flex-col justify-between rounded-2xl p-6 shadow-md transition-all duration-300 border border-gray-300 hover:border-principal bg-white h-full">
           <div>
+            <img
+              src={card.image}
+              alt={isEn ? card.titleEn : card.titleEs}
+              class="w-full object-cover rounded-xl mb-4"
+            />
             <h2 class="text-2xl font-bold mb-3 flex items-center gap-3 text-black">
               {isEn ? card.titleEn : card.titleEs}
             </h2>
@@ -97,6 +93,7 @@ const cards = [
       ))
     }
   </div>
+
   <section class="mt-16 max-w-4xl mx-auto px-4 text-center">
     <h3 class="text-3xl font-semibold mb-4 text-principal">
       {isEn ? "Why Follow Us?" : "¿Por qué seguirnos?"}
